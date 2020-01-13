@@ -65,6 +65,7 @@ $(document).ready(function () {
         }).done(function (response) {
             if (!response.success) {
                 console.error('signin error ', response);
+                $('#signin_message').html(response.err_message);
             }
             if (response.two_factor) {
                 $('.modal').modal('hide');
@@ -76,6 +77,8 @@ $(document).ready(function () {
             }
         }).error(function(response){
             console.error('signin error ', response);
+            var resJson = response.responseJSON;
+            $('#signin_message').html(resJson.err_message);
         });
     });
 
@@ -147,6 +150,8 @@ function avatarPath(avatar, size) {
     // FIXME: can not find pic if photo uploaded to 7niu
     if (avatar.indexOf('images.shiyix.org') > -1) {
         file_path = avatar + '_' + size;
+    } else if (avatar.indexOf('githubusercontent.com') > -1 || avatar.indexOf('gravatar.com') > -1) {
+        file_path = avatar;
     } else {
         var extname = avatar.substring(avatar.lastIndexOf('.') + 1);
         var path = avatar.substring(0, avatar.lastIndexOf('.'));

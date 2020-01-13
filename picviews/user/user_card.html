@@ -1,4 +1,4 @@
-<%- Loader('/public/stylesheets/pics.min.css')
+<%- Loader('/public/stylesheets/user.user_card.min.css')
 .css('/public/stylesheets/user/card.less')
 .done(assets, config.site_static_host, config.mini_assets)
 %>
@@ -31,7 +31,7 @@
             <li><i id="intro_horoscope"></i><em>双性别</em></li>
             <% } %>
             <% if (user.location) { %>
-            <li><i id="intro_location"></i><em>来自<%= user.location %></em></li>
+            <li><i id="intro_location"></i><em><%= user.location %></em></li>
             <% } %>
             <% if (user.email) { %>
             <li><i id="intro_horoscope"></i><em><%= user.email %></em></li>

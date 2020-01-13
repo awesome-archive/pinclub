@@ -1,4 +1,4 @@
-<%- Loader('/public/stylesheets/boards.min.css')
+<%- Loader('/public/stylesheets/board.index.min.css')
 .css('/public/stylesheets/board.less')
 .done(assets, config.site_static_host, config.mini_assets)
 %>
@@ -31,8 +31,8 @@
             </a>
             <% if (isOwner) {%>
             <div class="FollowBoard text-center">
-                <button href="/boards/<%= boards[i].id %>/edit" class="btn btn-default " id="modify_board" data-id="<%= boards[i].id %>" data-type="<%= boards[i].type %>" data-title="<%= boards[i].title %>"><strong>编辑</strong><span></span></button>
-                <button href="/boards/<%= boards[i].id %>/delete" class="btn btn-default " id="delete_board" data-id="<%= boards[i].id %>" style="background: red;color: white;"><strong>删除</strong><span></span></button>
+                <button href="/boards/<%= boards[i].id %>/edit" class="btn btn-default modify_board" data-id="<%= boards[i].id %>" data-type="<%= boards[i].type %>" data-title="<%= boards[i].title %>"><strong>编辑</strong><span></span></button>
+                <button href="/boards/<%= boards[i].id %>/delete" class="btn btn-default delete_board" data-id="<%= boards[i].id %>" data-title="<%= boards[i].title %>" style="background: red;color: white;"><strong>删除</strong><span></span></button>
             </div>
             <% } %>
         </div>
@@ -71,7 +71,28 @@
     </div>
 </div>
 
-<%- Loader('/public/javascripts/boards.min.js')
+<div class="modal fade" id="delete_board_modal" role="dialog" aria-hidden="true" aria-labelledby="deleteBoardModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal" action="#" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">删除画板 [<span class="board-name"></span>]</h5>
+                </div>
+                <div class="modal-body">
+                    是否删除 ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="delete-board-close" class="btn btn-default" data-dismiss="modal">Close
+                    </button>
+                    <button type="submit" id="delete-board-submit" class="btn btn-default " style="background: red;color: white;">删除
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- Loader('/public/javascripts/board.index.min.js')
 .js('/public/libs/select2/js/select2.full.js')
 .js('/public/libs/masonry.pkgd.js')
 .js('/public/libs/imagesloaded.pkgd.min.js')

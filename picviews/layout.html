@@ -23,7 +23,7 @@
     <% } %>
 
     <!-- style -->
-    <%- Loader('/public/stylesheets/index.min.css')
+    <%- Loader('/public/stylesheets/layout.min.css')
     .css('/public/libs/bootstrap3/css/bootstrap.css')
     .css('/public/stylesheets/common.css')
     .css('/public/stylesheets/style.less')
@@ -41,6 +41,8 @@
     <%- Loader('/public/javascripts/layout.min.js')
     .js('/public/libs/jquery-2.1.0.js')
     .js('/public/libs/lodash.min.js')
+    .js('/public/libs/jquery.sticky-kit.js')
+    .js('/public/javascripts/sticky.js')
     .js('/public/libs/jquery-ujs.js')
     .js('/public/libs/bootstrap3/js/bootstrap.js')
     .js('/public/libs/jquery.caret.js')
@@ -48,7 +50,6 @@
     .js('/public/libs/jquery.lazyloadxt.js')
     .js('/public/libs/jquery.nicescroll.js')
     .js('/public/libs/jquery.tmpl.min.js')
-    .js('/public/libs/jquery.sticky-kit.min.js')
     .js('/public/libs/markdownit.js')
     .js('/public/libs/code-prettify/prettify.js')
     .js('/public/libs/qrcode.js')
@@ -83,23 +84,22 @@
                     <h5 class="modal-title">登录</h5>
                 </div>
                 <div class="modal-body">
+                    <div class='form-group'>
+                        <label class='control-label' for='signin_modal_name'>用户名</label>
 
-                        <div class='form-group'>
-                            <label class='control-label' for='signin_modal_name'>用户名</label>
-
-                            <div class='controls'>
-                                <input class='form-control' id='signin_modal_name' name='name' size='30' type='text'/>
-                            </div>
+                        <div class='controls'>
+                            <input class='form-control' id='signin_modal_name' name='name' size='30' type='text'/>
                         </div>
-                        <div class='form-group'>
-                            <label class='control-label' for='signin_modal_pass'>密码</label>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label' for='signin_modal_pass'>密码</label>
 
-                            <div class='controls'>
-                                <input class='form-control' id='signin_modal_pass' name='pass' size='30' type='password'/>
-                            </div>
+                        <div class='controls'>
+                            <input class='form-control' id='signin_modal_pass' name='pass' size='30' type='password'/>
                         </div>
-                        <input type='hidden' name='_csrf' value='<%= csrf %>'/>
-
+                    </div>
+                    <p class="text-danger" id="signin_message" style="padding-bottom: 0px;"></p>
+                    <input type='hidden' name='_csrf' value='<%= csrf %>'/>
                 </div>
                 <div class="modal-footer">
                     <a id="forgot_password" href='/search_pass' class="pull-left">忘记密码了?</a>

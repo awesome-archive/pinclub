@@ -15,7 +15,7 @@
             <a href="/user/<%= current_user.loginname %>/get" style="width:76px;"><strong><%= current_user.image_count + current_user.get_image_count %></strong>图片</a>
             <% } %>
             <% if (typeof(showTopicCount) == 'undefined' || (typeof(showTopicCount) !== 'undefined' && !!showTopicCount)) { %>
-            <a href="/topics" style="border-left: #F5F2F2 solid 1px;width:76px;"><strong><%= current_user.topic_count %></strong>主题</a>
+            <a href="/user/<%= current_user.loginname %>/topics" style="border-left: #F5F2F2 solid 1px;width:76px;"><strong><%= current_user.topic_count %></strong>主题</a>
             <% } %>
             <a href="/boards" style="border-left: #F5F2F2 solid 1px;width:76px;"><strong><%= current_user.board_count %></strong>画板</a>
             <a href="/user/<%= current_user.loginname %>/score" style="border-left: #F5F2F2 solid 1px;width:76px;"><strong><%= current_user.score %></strong>积分</a>
@@ -43,11 +43,6 @@
         <div class="attribution" style="padding: 20px 25px;">
             <a href="/auth/github" class="btn wbtn">
                 <strong>GitHub</strong></a>
-            <div class="buttons small " >
-                <!--TODO Signin with wechat and QQ account-->
-                <a href="/auth/wechat" title="微信帐号登录" rel="nofollow" class="wechat" target="_blank"></a>
-                <a href="/auth/qzone" title="QQ帐号登录" rel="nofollow" class="qzone"></a>
-            </div>
         </div>
         <% } %>
     </div>
